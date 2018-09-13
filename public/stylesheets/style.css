@@ -1,8 +1,93 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	overflow: scroll;
 }
 
 a {
   color: #00B7FF;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #808080;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255,0,0,0.4); 
+}
+
+
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { padding: 3px; position: fixed; bottom: 20px; width: 90%; }
+      form input { 
+        border: 0; 
+        padding: 10px; 
+        width: 90%; 
+        margin-right: .5%; 
+        background: #cec9c9;
+        border-radius: 11px;
+      }
+      form button { 
+        width: 9%;
+        background: #1e7175;
+        border: none;
+        padding: 10px;
+        color: #fff;
+      }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { 
+        /*padding: 5px 10px;*/
+        padding: 14px;
+        margin: 5px 9px;
+        width: 65%;
+        font-size: 18px;
+        border-radius: 10px;
+      }
+      #messages li:nth-child(odd) { 
+            background: #ffdcdc;
+            color: #464646;
+            float: left;
+      }
+      #messages li:nth-child(even) { 
+            background: #6d2f2f;
+            color: #fff;
+            float: right;
+      }
+      #typingStatus{
+            position: fixed;
+            bottom: 30px;
+            z-index: 4;
+      }
+      body{
+        overflow: hidden;
+      }
+      ul {
+        overflow-y: auto;
+        height: 500px;
+      }
+      #removeBtn{
+        position: fixed;
+        right: 70px;
+        top: 40px;
+        background: #d2465d;
+        padding: 10px;
+        border: 0;
+        color: #fff;
+        font-size: 15px;
+      }

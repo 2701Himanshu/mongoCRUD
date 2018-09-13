@@ -1,6 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var mongoDB = require('./mongoDB');
+var ObjectId = require('mongodb').ObjectID;
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -11,6 +13,10 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+mongoDB.connectToServer( function( err ) {
+  console.log('Connection Successfull.');
+});
+
 io.on('connection', function(socket){
   // console.log('a user connected');
   // socket.on('disconnect', function(){
@@ -19,6 +25,16 @@ io.on('connection', function(socket){
   socket.on('Chatting', function(msg){
   	// console.log('Message: '+msg);
   	io.emit('Chatting', msg);
+    var saveMessage = {
+      sender: "Hello",
+      text: msg,
+      timestamp: new Date()
+    }
+    var DB = mongoDB.getDb();
+    DB.collection('GroupChatting').insert(saveMessage, function(err, result){
+        if(err) console.log(err);
+        else console.log(result);
+    });
   });
   socket.on('startTyping', function(status){
   	// console.log('status: '+status);
